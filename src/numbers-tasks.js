@@ -50,7 +50,7 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  return (value1 / 2) + (value2 / 2);
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -241,7 +241,7 @@ function toNumber(value, def) {
  *   0  => 0
  */
 function getCube(num) {
-  return Math.pow(num,3);
+  return num ** 3;
 }
 
 /**
@@ -418,7 +418,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return typeof number === 'number' && !number.isNaN && number != Infinity;
+  return typeof number === 'number' && Number.isFinite(number);
 }
 
 /**
@@ -447,7 +447,7 @@ function isInteger(number) {
  * 'abcdefgh'      => NaNe
  */
 function getFloatOnString(str) {
-  return parseFloat(str);
+  return Number.parseFloat(str);
 }
 
 /**
@@ -465,7 +465,7 @@ function getFloatOnString(str) {
  * '10', 8              => 8
  */
 function getIntegerOnString(str, base) {
-  return parseInt(str, base);
+  return Number.parseInt(str, base);
 }
 
 /**
@@ -554,7 +554,7 @@ function getIntegerPartNumber(number) {
  * 0.1, 0.2, 0.3 => 0.6
  */
 function getSumOfNumbers(x1, x2, x3) {
-  return x1 + x2 + x3;
+  return Math.round((x1 + x2 + x3) * 1e12) / 1e12;
 }
 
 /**
@@ -570,7 +570,7 @@ function getSumOfNumbers(x1, x2, x3) {
  * 0, 5   => 5
  */
 function getMaxNumber(firstNumber, secondNumber) {
-  return firstNumber > secondNumber ? firstNumber : secondNumber;
+  return Math.max(firstNumber, secondNumber);
 }
 
 /**
@@ -600,8 +600,7 @@ function getRandomInteger(min, max) {
  * 3, 4 => 5
  */
 function getHypotenuse(a, b) {
-  if (a == Number.MAX_VALUE || b === Number.MAX_VALUE) return Number.MAX_VALUE
-  return Math.sqrt(a ** 2 + b ** 2);
+  return Math.hypot(a, b);
 }
 
 /**
@@ -618,7 +617,7 @@ function getHypotenuse(a, b) {
  * 15 => 8
  */
 function getCountOfOddNumbers(number) {
-  return Math.abs(Math.round(number / 2));
+  return Math.abs(Math.trunc(number / 2) + (number % 2));
 }
 
 module.exports = {
