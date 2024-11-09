@@ -554,6 +554,7 @@ describe('core-js-numbers', () => {
       assert.equal(
         tasks.getHypotenuse(Number.MAX_VALUE, 6),
         1.7976931348623157e308
+        1.7976931348623157e+308
       );
       assert.equal(
         forbidden.isCommented(tasks.getHypotenuse),
